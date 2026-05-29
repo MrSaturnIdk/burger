@@ -9,4 +9,4 @@ Licensed under [AGPL-3.0-or-later](./LICENSE)
 
 # Contributing
 If you want to contribute,
-read [this](./MrSaturnIdk.github.io/CONTRIBUTING.md).
+read [this](https://github.com/MrSaturnIdk/MrSaturnIdk.github.io/CONTRIBUTING.md).
