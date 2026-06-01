@@ -1,12 +1,13 @@
+'use strict';
 const LOADING_SCREEN = document.querySelector('#loading-screen');
 const BURGER_TEXT = document.querySelector('#burger-text');
 // browsing data oooh
 let time = Number(localStorage.getItem('stareTime'));
-if (time == null) {
+if (time === null) {
     time = 0;
     console.log('New user');
 }
-else if (time == NaN) {
+else if (time === NaN) {
     time = 0;
     console.log('Error converting data for some reason');
 }
@@ -28,9 +29,9 @@ function makeDisplayableTime(seconds) {
     for (let i = 0; i < UNITS.length; i++) {
         const {label, modulo, divide} = UNITS[i];
         const NEXT_MODUED = next % modulo;
-        if (NEXT_MODUED == 1) {
+        if (NEXT_MODUED === 1) {
             returnable = `${NEXT_MODUED} ${label}, ` + returnable;
-        } else if (NEXT_MODUED == 0) {
+        } else if (NEXT_MODUED === 0) {
             /* does nothing since the value isn't to be added */
         } else {
             returnable = `${NEXT_MODUED} ${label}s, ` + returnable;
@@ -44,7 +45,7 @@ function makeDisplayableTime(seconds) {
     const LAST_COMMA = returnable.lastIndexOf(',');
     const FIRST_COMMA = returnable.indexOf(',');
     if (LAST_COMMA !== -1) {
-        if (LAST_COMMA == FIRST_COMMA) {
+        if (LAST_COMMA === FIRST_COMMA) {
             returnable = `${returnable.slice(0, LAST_COMMA)} and${returnable.slice(LAST_COMMA +1)}`;
         } else {
             returnable = `${returnable.slice(0, LAST_COMMA)}, and${returnable.slice(LAST_COMMA + 1)}`;
@@ -53,7 +54,7 @@ function makeDisplayableTime(seconds) {
     return returnable;
 }
 // epic loop trust
-async function timeLoop() {
+async function main() {
     while (true) {
         displayableTime = makeDisplayableTime(time);
         if (displayableTime === '') {
@@ -67,4 +68,4 @@ async function timeLoop() {
 }
 LOADING_SCREEN.style.display = 'none';
 console.log('Hooray it loaded');
-timeLoop();
+main();
